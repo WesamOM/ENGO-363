@@ -8,12 +8,12 @@
 
 using namespace std;
 
-vector<double> sort(vector<double> observation);
-double range(vector<double> observation);
-double median(vector<double> observation);
-double mean(vector<double> observation);
-double variance(vector<double> observation);
-double standardDeviation(vector<double> observation);
-double meanSD(vector<double> observation);
+vector<double> sort(vector<double> observations);
+double range(vector<double> observations);
+double median(vector<double> observations);
+double mean(vector<double> observations);
+double variance(vector<double> observations);
+double standardDeviation(vector<double> observations);
+double meanSD(vector<double> observations);
 
 #endif // CALCULATIONS_H
