@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <cmath>
 
 using namespace std;
 
@@ -64,14 +65,34 @@ double mean(vector<double> observations)
     return meanValue;
 }
 
-double variance(vector<double> observations)
+vector<double> residuals(vector<double> observations, double mean)
 {
-    return 0;
+    double residual;
+    for (int i = 0; i < observations.size(); i++)
+    {
+        residual = mean - observations[i];
+        observations[i] = residual;
+    }
+
+    return observations;
 }
 
-double standardDeviation(vector<double> observations)
+double variance(vector<double> residualValues)
 {
-    return 0;
+    double sum = 0;
+    for (double value : residualValues)
+    {
+        sum += value * value;
+    }
+    double varianceValue = sum / (residualValues.size() - 1);
+
+    return varianceValue;
+}
+
+double standardDeviation(double varianceValue)
+{
+    double sd = sqrt(varianceValue);
+    return sd;
 }
 
 double meanSD(vector<double> observations)

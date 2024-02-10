@@ -33,5 +33,27 @@ int main()
     double meanValue = mean(s);
     cout << "Mean: " << meanValue << endl;
 
+    cout << "Residual Vector: " << endl;
+    vector<double> residualValues = residuals(s, meanValue);
+    for (double element : residualValues)
+    {
+        cout << element << " ";
+    }
+    cout << endl;
+
+    cout << "Sorted Residual Vector: " << endl;
+    residualValues = sort(residualValues);
+    for (double element : residualValues)
+    {
+        cout << element << " ";
+    }
+    cout << endl;
+
+    double varianceValue = variance(residualValues);
+    cout << "Variance: " << varianceValue << endl;
+
+    double sdValue = standardDeviation(varianceValue);
+    cout << "Standard Deviation: " << sdValue << endl;
+
     return 0;
 }

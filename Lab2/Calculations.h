@@ -12,8 +12,9 @@ vector<double> sort(vector<double> observations);
 double range(vector<double> observations);
 double median(vector<double> observations);
 double mean(vector<double> observations);
-double variance(vector<double> observations);
-double standardDeviation(vector<double> observations);
+vector<double> residuals(vector<double> observations, double mean);
+double variance(vector<double> residualValues);
+double standardDeviation(double varianceValue);
 double meanSD(vector<double> observations);
 
 #endif // CALCULATIONS_H
