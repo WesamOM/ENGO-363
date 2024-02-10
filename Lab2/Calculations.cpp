@@ -6,18 +6,13 @@
 
 using namespace std;
 
-string ok()
+vector<double> sort(vector<double> observation)
 {
-    string ok = "ok";
-    return ok;
+    int first = 0;
+    int second = 1;
+    int last = observation.size();
+    return observation;
 }
-
-// vector<double> sort(vector<double> observation)
-// {
-//     int first = 0;
-//     int second = 1;
-//     int last = observation.size();
-// }
 
 double range(vector<double> observation)
 {

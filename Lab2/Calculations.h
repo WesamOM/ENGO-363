@@ -8,7 +8,6 @@
 
 using namespace std;
 
-string ok();
 vector<double> sort(vector<double> observation);
 double range(vector<double> observation);
 double median(vector<double> observation);
