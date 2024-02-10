@@ -10,9 +10,9 @@ using namespace std;
 vector<double> sort(vector<double> observations)
 {
     int n = observations.size();
-    for (int i = 0; i < n - 1; ++i)
+    for (int i = 0; i < n - 1; i++)
     {
-        for (int j = 0; j < n - i - 1; ++j)
+        for (int j = 0; j < n - i - 1; j++)
         {
             if (observations[j] > observations[j + 1])
             {
