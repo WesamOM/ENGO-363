@@ -113,9 +113,9 @@ int main()
 
     vector<double> means = {obsMean1, obsMean2};
 
-    double weight1 = weight(meanSD1);
-    double weight2 = weight(meanSD2);
-    vector<double> weights = {meanSD1, meanSD2};
+    double weight1 = weight(obsSD1);
+    double weight2 = weight(obsSD2);
+    vector<double> weights = {weight1, weight2};
 
     double weightedMeanValue = weightedMean(weights, means);
     cout << "Weighted Mean: " << weightedMeanValue << endl;

@@ -20,7 +20,7 @@ void readFile(string s, vector<double> &observations)
 
     while (file >> value1 >> value2)
     {
-        observations.push_back(value1);
+        // observations.push_back(value1);
         observations.push_back(value2);
     }
 
