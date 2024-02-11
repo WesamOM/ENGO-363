@@ -1,0 +1,15 @@
+                               Keys	Values
+                             Range:	0.1450
+                            Median:	137.4150
+                              Mean:	137.4137
+                          Variance:	0.0011
+                Standard Deviation:	0.0325
+           Mean Standard Deviation:	0.0059
+                   Residuals Range:	0.1450
+                  Residuals Median:	-0.0013
+                     Residuals Sum:	0.0000
+                    Residuals Mean:	0.0000
+                Residuals Variance:	0.0011
+      Residuals Standard Deviation:	0.0325
+                     Weighted Mean:	137.4129
+  Weighted Mean Standard Deviation:	0.0039
