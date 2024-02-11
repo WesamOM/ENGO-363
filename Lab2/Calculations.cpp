@@ -77,12 +77,12 @@ vector<double> residuals(vector<double> vector, double mean)
     return vector;
 }
 
-double variance(vector<double> vector)
+double variance(vector<double> vector, double mean)
 {
     double sum = 0;
     for (double value : vector)
     {
-        sum += value * value;
+        sum += pow(value - mean, 2);
     }
     double varianceValue = sum / (vector.size() - 1);
 
@@ -95,9 +95,9 @@ double standardDeviation(double varianceValue)
     return sd;
 }
 
-double meanSD(vector<double> vector, double meanValue)
+double meanSD(vector<double> vector, double sd)
 {
-    double meanSDValue = meanValue / sqrt(vector.size());
+    double meanSDValue = sd / sqrt(vector.size());
     return meanSDValue;
 }
 
@@ -110,4 +110,37 @@ double sum(vector<double> vector)
     }
 
     return sumValue;
+}
+double weight(double meanSD)
+{
+    double weightValue = 1 / pow(meanSD, 2);
+    return weightValue;
+}
+
+double weightedMean(vector<double> weights, vector<double> means)
+{
+    double sum1, sum2 = 0;
+    for (int i = 0; i < weights.size(); i++)
+    {
+        sum1 += weights[i] * means[i];
+        sum2 += weights[i];
+    }
+
+    double weightedMeanValue = sum1 / sum2;
+
+    return weightedMeanValue;
+}
+
+double weightedMeanSD(vector<double> weights, vector<double> means, double wm)
+{
+    double sum1, sum2 = 0;
+    for (int i = 0; i < weights.size(); i++)
+    {
+        sum1 += weights[i] * pow((wm - means[i]), 2);
+        sum2 += weights[i];
+    }
+
+    double weightedMeanSDValue = sqrt(sum1 / ((weights.size() - 1) * sum2));
+
+    return weightedMeanSDValue;
 }
