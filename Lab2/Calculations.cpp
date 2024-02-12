@@ -8,83 +8,83 @@
 
 using namespace std;
 
-vector<double> sort(vector<double> vector)
+vector<double> sort(vector<double> v)
 {
-    int n = vector.size();
+    int n = v.size();
     for (int i = 0; i < n - 1; i++)
     {
         for (int j = 0; j < n - i - 1; j++)
         {
-            if (vector[j] > vector[j + 1])
+            if (v[j] > v[j + 1])
             {
-                double temp = vector[j];
-                vector[j] = vector[j + 1];
-                vector[j + 1] = temp;
+                double temp = v[j];
+                v[j] = v[j + 1];
+                v[j + 1] = temp;
             }
         }
     }
-    return vector;
+    return v;
 }
 
-double range(vector<double> vector)
+double range(vector<double> v)
 {
-    int lastIndex = vector.size() - 1;
-    double first = vector[0];
-    double last = vector[lastIndex];
+    int lastIndex = v.size() - 1;
+    double first = v[0];
+    double last = v[lastIndex];
 
     return last - first;
 }
 
-double median(vector<double> vector)
+double median(vector<double> v)
 {
     double medianValue;
-    int check = vector.size() % 2;
+    int check = v.size() % 2;
 
     if (check == 0)
     {
-        int lower = vector.size() / 2 - 1;
-        int upper = vector.size() / 2;
-        medianValue = (vector[lower] + vector[upper]) / 2;
+        int lower = v.size() / 2 - 1;
+        int upper = v.size() / 2;
+        medianValue = (v[lower] + v[upper]) / 2;
 
         return medianValue;
     }
 
-    medianValue = vector[vector.size() / 2];
+    medianValue = v[v.size() / 2];
 
     return medianValue;
 }
 
-double mean(vector<double> vector)
+double mean(vector<double> v)
 {
     double sum;
-    for (double value : vector)
+    for (double value : v)
     {
         sum += value;
     }
-    double meanValue = sum / vector.size();
+    double meanValue = sum / v.size();
     return meanValue;
 }
 
-vector<double> residuals(vector<double> vector, double mean)
+vector<double> residuals(vector<double> v, double mean)
 {
     double residual;
-    for (int i = 0; i < vector.size(); i++)
+    for (int i = 0; i < v.size(); i++)
     {
-        residual = mean - vector[i];
-        vector[i] = residual;
+        residual = mean - v[i];
+        v[i] = residual;
     }
 
-    return vector;
+    return v;
 }
 
-double variance(vector<double> vector, double mean)
+double variance(vector<double> v, double mean)
 {
     double sum = 0;
-    for (double value : vector)
+    for (double value : v)
     {
         sum += pow(value - mean, 2);
     }
-    double varianceValue = sum / (vector.size() - 1);
+    double varianceValue = sum / (v.size() - 1);
 
     return varianceValue;
 }
@@ -95,16 +95,16 @@ double standardDeviation(double varianceValue)
     return sd;
 }
 
-double meanSD(vector<double> vector, double sd)
+double meanSD(vector<double> v, double sd)
 {
-    double meanSDValue = sd / sqrt(vector.size());
+    double meanSDValue = sd / sqrt(v.size());
     return meanSDValue;
 }
 
-double sum(vector<double> vector)
+double sum(vector<double> v)
 {
     double sumValue = 0;
-    for (double value : vector)
+    for (double value : v)
     {
         sumValue += value;
     }
@@ -143,4 +143,19 @@ double weightedMeanSD(vector<double> weights, vector<double> means, double wm)
     double weightedMeanSDValue = sqrt(sum1 / ((weights.size() - 1) * sum2));
 
     return weightedMeanSDValue;
+}
+
+vector<vector<double>> transpose(vector<vector<double>> matrix)
+{
+    vector<vector<double>> transposed(matrix[0].size(), vector<double>(matrix.size()));
+
+    for (int row = 0; row < matrix.size(); row++)
+    {
+        for (int col = 0; col < matrix[row].size(); col++)
+        {
+            transposed[col][row] = matrix[row][col];
+        }
+    }
+
+    return transposed;
 }

@@ -8,6 +8,7 @@
 
 using namespace std;
 
+// Function to read two-column files
 void readFile(string file, vector<double> &observations)
 {
     ifstream infile(file);
@@ -20,6 +21,7 @@ void readFile(string file, vector<double> &observations)
 
     double value1, value2;
 
+    // Read two-column values
     while (infile >> value1 >> value2)
     {
         observations.push_back(value2);
@@ -27,6 +29,33 @@ void readFile(string file, vector<double> &observations)
 
     // Close the file
     infile.close();
+}
+
+// Function to read single-column files
+vector<double> readFile(string file)
+{
+    vector<double> v;
+
+    ifstream infile(file);
+
+    if (!infile.is_open())
+    {
+        cout << "File failed to open" << endl;
+        exit(1);
+    }
+
+    double value;
+
+    // Read single-column values
+    while (infile >> value)
+    {
+        v.push_back(value);
+    }
+
+    // Close the file
+    infile.close();
+
+    return v;
 }
 
 void writeToFile(string file, vector<string> keys, vector<double> &values)

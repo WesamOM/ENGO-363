@@ -13,17 +13,18 @@ int main()
     vector<double> valuesA;
     vector<double> valuesB;
 
-    string file1 = "obsA_2024.txt";
-    string file2 = "obsB_2024.txt";
+    string obsA = "obsA_2024.txt";
+    string obsB = "obsB_2024.txt";
     vector<double> observations1, observations2;
-    readFile(file1, observations1);
-    readFile(file2, observations2);
+    readFile(obsA, observations1);
+    readFile(obsB, observations2);
     observations1 = sort(observations1);
     observations2 = sort(observations2);
 
     cout << fixed << setprecision(4);
 
     cout << "Observations A: " << endl;
+    cout << observations1.size() << endl;
     for (double element : observations1)
     {
         cout << element << " ";
@@ -189,6 +190,88 @@ int main()
     writeToFile("ObsB_Values.txt", keys, valuesB);
     writeToFile("Residuals_A.txt", residuals1);
     writeToFile("Residuals_B.txt", residuals2);
+
+    // Task 2
+    string s = "speed_2024.txt";
+    string w = "weight_2024.txt";
+    string g = "goals_2024.txt";
+    string h = "height_2024.txt";
+
+    vector<double> speed, weight, goals, height;
+
+    speed = readFile(s);
+    weight = readFile(w);
+    goals = readFile(g);
+    height = readFile(h);
+
+    speed = sort(speed);
+    weight = sort(weight);
+    goals = sort(goals);
+    height = sort(height);
+
+    cout << fixed << setprecision(2);
+
+    cout << "Speed: " << endl;
+    for (double element : speed)
+    {
+        cout << element << " ";
+    }
+    cout << endl;
+
+    cout << fixed << setprecision(1);
+
+    cout << "weight: " << endl;
+    for (double element : weight)
+    {
+        cout << element << " ";
+    }
+    cout << endl;
+
+    cout << fixed << setprecision(0);
+
+    cout << "goals: " << endl;
+    for (double element : goals)
+    {
+        cout << element << " ";
+    }
+    cout << endl;
+
+    cout << fixed << setprecision(3);
+
+    cout << "height: " << endl;
+    for (double element : height)
+    {
+        cout << element << " ";
+    }
+    cout << endl;
+    cout << endl;
+
+    vector<vector<double>> matrix = {{speed},
+                                     {weight},
+                                     {goals},
+                                     {height}};
+
+    for (int i = 0; i < matrix.size(); i++)
+    {
+        for (int j = 0; j < matrix[i].size(); j++)
+        {
+            cout << matrix[i][j] << "\t";
+        }
+        cout << endl;
+    }
+
+    cout << endl;
+
+    matrix = transpose(matrix);
+
+    for (int i = 0; i < matrix.size(); i++)
+    {
+        for (int j = 0; j < matrix[i].size(); j++)
+        {
+            cout << matrix[i][j] << "\t";
+        }
+        cout << endl;
+    }
 
     return 0;
 }
