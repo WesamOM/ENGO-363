@@ -187,6 +187,8 @@ int main()
 
     writeToFile("ObsA_Values.txt", keys, valuesA);
     writeToFile("ObsB_Values.txt", keys, valuesB);
+    writeToFile("Residuals_A.txt", residuals1);
+    writeToFile("Residuals_B.txt", residuals2);
 
     return 0;
 }

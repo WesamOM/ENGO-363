@@ -9,6 +9,6 @@
 using namespace std;
 
 void readFile(string s, vector<double> &observations);
-void writeToFile(string s, vector<string> keys, vector<double> &values);
-
+void writeToFile(string file, vector<string> keys, vector<double> &values);
+void writeToFile(string file, vector<double> residuals);
 #endif // FILEHANDLING_H

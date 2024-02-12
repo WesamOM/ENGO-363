@@ -8,11 +8,11 @@
 
 using namespace std;
 
-void readFile(string s, vector<double> &observations)
+void readFile(string file, vector<double> &observations)
 {
-    ifstream file(s);
+    ifstream infile(file);
 
-    if (!file.is_open())
+    if (!infile.is_open())
     {
         cout << "File failed to open" << endl;
         exit(1);
@@ -20,23 +20,24 @@ void readFile(string s, vector<double> &observations)
 
     double value1, value2;
 
-    while (file >> value1 >> value2)
+    while (infile >> value1 >> value2)
     {
         observations.push_back(value2);
     }
 
     // Close the file
-    file.close();
+    infile.close();
 }
 
-void writeToFile(string s, vector<string> keys, vector<double> &values)
+void writeToFile(string file, vector<string> keys, vector<double> &values)
 {
-    ofstream outfile(s);
+    ofstream outfile(file);
     if (!outfile.is_open())
     {
-        cout << "Unable to open file: " << s << endl;
+        cout << "Unable to open file: " << file << endl;
         return;
     }
+
     outfile << std::fixed << std::setprecision(4);
     outfile << setw(35) << "Keys"
             << "\t"
@@ -52,6 +53,24 @@ void writeToFile(string s, vector<string> keys, vector<double> &values)
                 << "\t"
                 << values[i]
                 << endl;
+    }
+
+    outfile.close();
+}
+
+void writeToFile(string file, vector<double> residuals)
+{
+    ofstream outfile(file);
+    if (!outfile.is_open())
+    {
+        cout << "Unable to open file: " << file << endl;
+        return;
+    }
+
+    outfile << std::fixed << std::setprecision(4);
+    for (double value : residuals)
+    {
+        outfile << value << endl;
     }
 
     outfile.close();
