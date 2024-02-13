@@ -159,3 +159,30 @@ vector<vector<double>> transpose(vector<vector<double>> matrix)
 
     return transposed;
 }
+
+double covariance(vector<double> v1, vector<double> v2)
+{
+    double mean_v1 = mean(v1);
+    double mean_v2 = mean(v2);
+
+    double sum = 0;
+    for (int i = 0; i < v1.size(); i++)
+    {
+        sum += (mean_v1 - v1[i]) * (mean_v2 - v2[i]);
+    }
+    double covar = (1.0 / (v1.size() - 1)) * sum;
+    return covar;
+}
+
+vector<vector<double>> variantCovariant(vector<vector<double>> var_covar, vector<vector<double>> res)
+{
+    for (int row = 0; row < var_covar.size(); row++)
+    {
+        for (int col = 0; col < var_covar[row].size(); col++)
+        {
+            double covar = covariance(res[row], res[col]);
+            var_covar[row][col] = covar;
+        }
+    }
+    return var_covar;
+}

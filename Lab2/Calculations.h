@@ -21,5 +21,7 @@ double weight(double meanSD);
 double weightedMean(vector<double> weights, vector<double> means);
 double weightedMeanSD(vector<double> weights, vector<double> means, double wm);
 vector<vector<double>> transpose(vector<vector<double>> v);
+double covariance(vector<double> v1, vector<double> v2);
+vector<vector<double>> variantCovariant(vector<vector<double>> var_covar, vector<vector<double>> res);
 
 #endif // CALCULATIONS_H

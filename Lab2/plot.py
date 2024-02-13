@@ -30,10 +30,7 @@ weightedMean_Obs_A = obsA["Weighted Mean"]
 # Calculate the confidence interval
 alpha = 0.95
 dof = len(observations_A) - 1
-ci_Obs_A = st.t.interval(alpha, dof, loc = mean_Obs_A, scale = std_Obs_A / np.sqrt(len(observations_A)))
-# ci_Obs_A = [mean_Obs_A - 2 * std_Obs_A, mean_Obs_A + 2 * std_Obs_A]
-ci_lower = round(ci_Obs_A[0], 4) # Lower bound of confidence interval
-ci_upper = round(ci_Obs_A[1], 4) # Upper bound of confidence interval
+ci_Obs_A = [mean_Obs_A - std_Obs_A * 2, mean_Obs_A + std_Obs_A * 2]
 
 # Plot time series of observations
 plt.figure(figsize=(10, 6))
@@ -44,7 +41,7 @@ plt.axhline(y = mean_Obs_A, color = "red", linestyle = "--", label = "Mean")
 plt.axhline(y = weightedMean_Obs_A, color = "blue", linestyle = "--", label = "Weighted Mean")
 
 # Plot confidence interval
-plt.fill_between(time_A, ci_lower, ci_upper, color = 'gray', alpha = 0.4, label = '95% CI')
+plt.fill_between(time_A, ci_Obs_A[0], ci_Obs_A[1], color = 'gray', alpha = 0.4, label = '95% CI')
 
 plt.xlabel("Time")
 plt.ylabel("Observations A")
@@ -66,8 +63,7 @@ dof = len(residuals_A) - 1
 mean_residuals_A = obsA["Residuals Mean"]
 std_residuals_A = obsA["Residuals Standard Deviation"]
 
-ci_residuals_A = st.t.interval(alpha, dof, loc = mean_residuals_A, scale = std_residuals_A / np.sqrt(len(residuals_A)))
-# ci_residualsA = [mean_residuals_A - 3 * std_residuals_A, mean_residuals_A + 3 * std_residuals_A]
+ci_residuals_A = [mean_residuals_A - 3 * std_residuals_A, mean_residuals_A + 3 * std_residuals_A]
 
 # Plot the histogram of residuals
 plt.hist(residuals_A, bins = 30, density = True, alpha = 0.5, color = 'blue', label = 'Residuals')
@@ -90,7 +86,7 @@ plt.close()
 
 time_B = []
 observations_B = []
-with open("obsA_2024.txt", "r") as file:
+with open("obsB_2024.txt", "r") as file:
     for line in file:
         t, obs = line.strip().split("\t")
         time_B.append(float(t))
@@ -113,20 +109,19 @@ weightedMean_Obs_B = obsB["Weighted Mean"]
 # Calculate the confidence interval
 alpha = 0.95
 dof = len(obsA) - 1
-ci_Obs_B = st.t.interval(alpha, dof, loc = mean_Obs_A, scale = std_Obs_A / np.sqrt(len(observations_B)))
-ci_lower = round(ci_Obs_A[0], 4) # Lower bound of confidence interval
-ci_upper = round(ci_Obs_A[1], 4) # Upper bound of confidence interval
+ci_Obs_B = [mean_Obs_B - std_Obs_B * 2, mean_Obs_B + std_Obs_B * 2]
+
 
 # Plot time series of observations
 plt.figure(figsize=(10, 6))
-plt.plot(time_B, observations_B, label="Observations B", marker="o")
+plt.plot(time_B, observations_B, label="Observations B", marker = "o")
 
 # Plot mean and weighted mean
 plt.axhline(y = mean_Obs_B, color = "red", linestyle = "--", label = "Mean")
 plt.axhline(y = weightedMean_Obs_B, color = "blue", linestyle = "--", label = "Weighted Mean")
 
 # Plot confidence interval
-plt.fill_between(time_B, ci_lower, ci_upper, color = 'gray', alpha = 0.4, label = '95% CI')
+plt.fill_between(time_B, ci_Obs_B[0], ci_Obs_B[1], color = 'gray', alpha = 0.4, label = '95% CI')
 
 plt.xlabel("Time")
 plt.ylabel("Observations B")
@@ -145,10 +140,10 @@ with open("Residuals_B.txt", "r") as file:
 
 alpha = 0.99
 dof = len(residuals_B) - 1
-mean_residuals_B = obsA["Residuals Mean"]
-std_residuals_B = obsA["Residuals Standard Deviation"]
+mean_residuals_B = obsB["Residuals Mean"]
+std_residuals_B = obsB["Residuals Standard Deviation"]
 
-ci_residuals_B = st.t.interval(alpha, dof, loc = mean_residuals_B, scale = std_residuals_B / np.sqrt(len(residuals_B)))
+ci_residuals_B = [mean_residuals_B - 3 * std_residuals_B, mean_residuals_B + 3 * std_residuals_B]
 # Plot the histogram of residuals
 plt.hist(residuals_B, bins = 30, density = True, alpha = 0.5, color = 'blue', label = 'Residuals')
 
