@@ -1,6 +1,20 @@
+'''
+    *********************************************************
+    Written by Wesam Omran - 30133992
+    ENGO 363: Estimation and Statistical Methods
+    Lab 2
+
+    Python file responsible for plotting the results found
+    in other C++ files
+
+    *********************************************************
+'''
+
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.stats as st
+
+# Task 1 
 
 # Read data from obsA_2024.txt
 time_A = []
@@ -158,5 +172,83 @@ plt.title('Residual Probability Density Histogram')
 plt.legend()
 plt.grid(True)
 plt.savefig("Residuals_B.png")
+plt.show()
+plt.close()
+
+# Task 2
+
+# Load data from text files
+weight = []
+height = []
+speed = []
+goals = []
+
+with open("weight_2024.txt", "r") as file:
+    for line in file:
+        weight.append(float(line.strip()))  # Convert to float
+
+with open("height_2024.txt", "r") as file:
+    for line in file:
+        height.append(float(line.strip()))  # Convert to float
+
+with open("speed_2024.txt", "r") as file:
+    for line in file:
+        speed.append(float(line.strip()))  # Convert to float
+
+with open("goals_2024.txt", "r") as file:
+    for line in file:
+        goals.append(float(line.strip()))  # Convert to float
+
+# Scatter plot for weight vs. height
+plt.scatter(weight, height)
+plt.xlabel('Weight')
+plt.ylabel('Height')
+plt.title('Weight vs. Height')
+plt.savefig('weight_vs_height.png')
+plt.show()
+plt.close()
+
+# Scatter plot for weight vs. speed
+plt.scatter(weight, speed)
+plt.xlabel('Weight')
+plt.ylabel('Speed')
+plt.title('Weight vs. Speed')
+plt.savefig('weight_vs_speed.png')
+plt.show()
+plt.close()
+
+# Scatter plot for weight vs. goals
+plt.scatter(weight, goals)
+plt.xlabel('Weight')
+plt.ylabel('Goals')
+plt.title('Weight vs. Goals')
+plt.savefig('weight_vs_goals.png')
+plt.show()
+plt.close()
+
+# Scatter plot for height vs. speed
+plt.scatter(height, speed)
+plt.xlabel('Height')
+plt.ylabel('Speed')
+plt.title('Height vs. Speed')
+plt.savefig('height_vs_speed.png')
+plt.show()
+plt.close()
+
+# Scatter plot for height vs. goals
+plt.scatter(height, goals)
+plt.xlabel('Height')
+plt.ylabel('Goals')
+plt.title('Height vs. Goals')
+plt.savefig('height_vs_goals.png')
+plt.show()
+plt.close()
+
+# Scatter plot for speed vs. goals
+plt.scatter(speed, goals)
+plt.xlabel('Speed')
+plt.ylabel('Goals')
+plt.title('Speed vs. Goals')
+plt.savefig('speed_vs_goals.png')
 plt.show()
 plt.close()

@@ -1,4 +1,14 @@
-// Calculations.h - Header file for the Calculations class
+/*
+    *********************************************************
+
+    Written by Wesam Omran - 30133992
+    ENGO 363: Estimation and Statistical Methods
+    Lab 2
+
+    Calculations.h - Header file for the Calculations class
+
+    *********************************************************
+*/
 
 #ifndef CALCULATIONS_H
 #define CALCULATIONS_H
@@ -23,5 +33,6 @@ double weightedMeanSD(vector<double> weights, vector<double> means, double wm);
 vector<vector<double>> transpose(vector<vector<double>> v);
 double covariance(vector<double> v1, vector<double> v2);
 vector<vector<double>> variantCovariant(vector<vector<double>> var_covar, vector<vector<double>> res);
+vector<vector<double>> correlationCoefficient(vector<vector<double>> corCoef, vector<vector<double>> var_covar, vector<double> std);
 
 #endif // CALCULATIONS_H

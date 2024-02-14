@@ -1,4 +1,15 @@
-// Calculations.cpp - Source file for the Calculations class
+/*
+    *********************************************************
+    Written by Wesam Omran - 30133992
+    ENGO 363: Estimation and Statistical Methods
+    Lab 2
+
+    Calculations.cpp - Source file for the Calculations class
+    This class is responsible for all calculations needed
+    for tasks given in the lab
+
+    *********************************************************
+*/
 
 #include "Calculations.h"
 #include <iostream>
@@ -8,6 +19,7 @@
 
 using namespace std;
 
+// Function responsible for sorting the vector given in ascending order
 vector<double> sort(vector<double> v)
 {
     int n = v.size();
@@ -26,6 +38,7 @@ vector<double> sort(vector<double> v)
     return v;
 }
 
+// Function responsible for calculating the range of vector given
 double range(vector<double> v)
 {
     int lastIndex = v.size() - 1;
@@ -35,6 +48,7 @@ double range(vector<double> v)
     return last - first;
 }
 
+// Function responsible for calculating the median of vector given
 double median(vector<double> v)
 {
     double medianValue;
@@ -54,6 +68,7 @@ double median(vector<double> v)
     return medianValue;
 }
 
+// Function responsible for calculating mean of the vector given
 double mean(vector<double> v)
 {
     double sum;
@@ -65,6 +80,8 @@ double mean(vector<double> v)
     return meanValue;
 }
 
+// Function responsible for creating a residuals vector
+// by passing a vector and its mean
 vector<double> residuals(vector<double> v, double mean)
 {
     double residual;
@@ -77,6 +94,8 @@ vector<double> residuals(vector<double> v, double mean)
     return v;
 }
 
+// Function responsible for calculating the variance of the vector given
+// using its mean
 double variance(vector<double> v, double mean)
 {
     double sum = 0;
@@ -89,18 +108,23 @@ double variance(vector<double> v, double mean)
     return varianceValue;
 }
 
+// Function responsible for calculating the standard deviation
+// of the vector given using its variance
 double standardDeviation(double varianceValue)
 {
     double sd = sqrt(varianceValue);
     return sd;
 }
 
+// Function responsible for calculating the standard deviation
+// of the mean of the vector given using its standard deviation
 double meanSD(vector<double> v, double sd)
 {
     double meanSDValue = sd / sqrt(v.size());
     return meanSDValue;
 }
 
+// Function responsible for calculating the sum of the given vector
 double sum(vector<double> v)
 {
     double sumValue = 0;
@@ -111,12 +135,16 @@ double sum(vector<double> v)
 
     return sumValue;
 }
+
+// Function responsible for calculating the weight of the mean
 double weight(double meanSD)
 {
     double weightValue = 1 / pow(meanSD, 2);
     return weightValue;
 }
 
+// Function responsible for calculating the weighted mean
+// using the weight calculated and the mean of their vector
 double weightedMean(vector<double> weights, vector<double> means)
 {
     double sum1, sum2 = 0;
@@ -131,6 +159,8 @@ double weightedMean(vector<double> weights, vector<double> means)
     return weightedMeanValue;
 }
 
+// Function responsible for calculating the weighted mean standard deviation
+// usin the vector of weights, the vector of means and the weighted mean
 double weightedMeanSD(vector<double> weights, vector<double> means, double wm)
 {
     double sum1, sum2 = 0;
@@ -145,6 +175,7 @@ double weightedMeanSD(vector<double> weights, vector<double> means, double wm)
     return weightedMeanSDValue;
 }
 
+// Function responsible for transposing a given matrix (2D vector)
 vector<vector<double>> transpose(vector<vector<double>> matrix)
 {
     vector<vector<double>> transposed(matrix[0].size(), vector<double>(matrix.size()));
@@ -160,6 +191,7 @@ vector<vector<double>> transpose(vector<vector<double>> matrix)
     return transposed;
 }
 
+// Function responsible for calculating the covariance of 2 different vectors
 double covariance(vector<double> v1, vector<double> v2)
 {
     double mean_v1 = mean(v1);
@@ -174,6 +206,7 @@ double covariance(vector<double> v1, vector<double> v2)
     return covar;
 }
 
+// Function responsible for calculating the variant-covariant matrix
 vector<vector<double>> variantCovariant(vector<vector<double>> var_covar, vector<vector<double>> res)
 {
     for (int row = 0; row < var_covar.size(); row++)
@@ -185,4 +218,17 @@ vector<vector<double>> variantCovariant(vector<vector<double>> var_covar, vector
         }
     }
     return var_covar;
+}
+
+// Function responsible for calculating the correlation of coefficients matrix
+vector<vector<double>> correlationCoefficient(vector<vector<double>> corCoef, vector<vector<double>> var_covar, vector<double> std)
+{
+    for (int row = 0; row < corCoef.size(); row++)
+    {
+        for (int col = 0; col < corCoef[row].size(); col++)
+        {
+            corCoef[row][col] = var_covar[row][col] / (std[row] * std[col]);
+        }
+    }
+    return corCoef;
 }

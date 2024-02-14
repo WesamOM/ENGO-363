@@ -1,4 +1,14 @@
-// ReadFile.cpp - Header file for the ReadFile class
+/*
+    *********************************************************
+
+    Written by Wesam Omran - 30133992
+    ENGO 363: Estimation and Statistical Methods
+    Lab 2
+
+    ReadFile.cpp - Header file for the ReadFile class
+
+    *********************************************************
+*/
 
 #ifndef FILEHANDLING_H
 #define FILEHANDLING_H
