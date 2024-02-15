@@ -112,8 +112,8 @@ double variance(vector<double> v, double mean)
 // of the vector given using its variance
 double standardDeviation(double varianceValue)
 {
-    double sd = sqrt(varianceValue);
-    return sd;
+    double std = sqrt(varianceValue);
+    return std;
 }
 
 // Function responsible for calculating the standard deviation

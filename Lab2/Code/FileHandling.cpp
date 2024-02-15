@@ -134,3 +134,29 @@ void writeToFile(string file, vector<double> residuals)
     // Close the output file
     outfile.close();
 }
+
+void writeToFile(string file, vector<vector<double>> matrix)
+{
+    // Open the output file
+    ofstream outfile(file);
+    if (!outfile.is_open())
+    {
+        cout << "Unable to open file: " << file << endl;
+        return;
+    }
+
+    // Set the output formatting
+    outfile << std::fixed << std::setprecision(4);
+
+    for (int row = 0; row < matrix.size(); row++)
+    {
+        for (int col = 0; col < matrix[row].size(); col++)
+        {
+            outfile << matrix[row][col] << "\t";
+        }
+        outfile << endl;
+    }
+
+    // Close the output file
+    outfile.close();
+}

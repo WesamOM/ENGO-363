@@ -336,6 +336,30 @@ int main()
     cout << endl;
     cout << endl;
 
+    vector<string> stats = {"Mean", "Variance", "Standard Deviation"};
+    vector<double> weightCalc, heightCalc, speedCalc, goalsCalc;
+
+    weightCalc.push_back(mean(weight));
+    weightCalc.push_back(variance(weight, mean(weight)));
+    weightCalc.push_back(standardDeviation(variance(weight, mean(weight))));
+
+    heightCalc.push_back(mean(height));
+    heightCalc.push_back(variance(height, mean(height)));
+    heightCalc.push_back(standardDeviation(variance(height, mean(height))));
+
+    speedCalc.push_back(mean(speed));
+    speedCalc.push_back(variance(speed, mean(speed)));
+    speedCalc.push_back(standardDeviation(variance(speed, mean(speed))));
+
+    goalsCalc.push_back(mean(goals));
+    goalsCalc.push_back(variance(goals, mean(goals)));
+    goalsCalc.push_back(standardDeviation(variance(goals, mean(goals))));
+
+    writeToFile("Weight_Values.txt", stats, weightCalc);
+    writeToFile("Height_Values.txt", stats, heightCalc);
+    writeToFile("Speed_Values.txt", stats, speedCalc);
+    writeToFile("Goals_Values.txt", stats, goalsCalc);
+
     /*
         Initial a matrix that will hold the vectors for
         weight, height, speed, and goals
@@ -431,6 +455,8 @@ int main()
         cout << endl;
     }
 
+    writeToFile("Variant-Covariant_Matrix.txt", var_covar);
+
     // Compute Correlation of Coefficients Matrix
     vector<vector<double>> corCoef(var_covar.size(), vector<double>(var_covar.size()));
     corCoef = correlationCoefficient(corCoef, var_covar, stds);
@@ -446,6 +472,8 @@ int main()
         }
         cout << endl;
     }
+
+    writeToFile("Correlation_Coefficient_Matrix.txt", corCoef);
 
     return 0;
 }

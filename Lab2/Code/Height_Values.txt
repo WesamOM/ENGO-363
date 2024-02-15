@@ -1,0 +1,4 @@
+                               Keys	Values
+                               Mean	1.7725
+                           Variance	0.0073
+                 Standard Deviation	0.0853
