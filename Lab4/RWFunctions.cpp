@@ -1,6 +1,7 @@
 #include "RWFunctions.h"
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 
 MatrixXf readObsCoord(string file)
 {
@@ -56,4 +57,45 @@ VectorXf readDist(string file)
     }
 
     return distances;
+}
+
+void writeMatrix(MatrixXf matrix, string file)
+{
+    ofstream outputFile(file);
+
+    if (!outputFile.is_open())
+    {
+        cerr << "Error: Unable to open file " << file << endl;
+        return;
+    }
+
+    for (int i = 0; i < matrix.rows(); i++)
+    {
+        for (int j = 0; j < matrix.cols(); j++)
+        {
+            outputFile << setw(11) << matrix(i, j) << "\t";
+        }
+
+        outputFile << endl;
+    }
+
+    outputFile.close();
+}
+
+void writeVector(VectorXf vec, string file)
+{
+    ofstream outputFile(file);
+
+    if (!outputFile.is_open())
+    {
+        cerr << "Error: Unable to open file " << file << endl;
+        return;
+    }
+
+    for (int i = 0; i < vec.size(); i++)
+    {
+        outputFile << vec(i) << endl;
+    }
+
+    outputFile.close();
 }

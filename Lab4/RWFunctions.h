@@ -8,5 +8,7 @@ using namespace Eigen;
 
 MatrixXf readObsCoord(string file);
 VectorXf readDist(string file);
+void writeMatrix(MatrixXf matrix, string file);
+void writeVector(VectorXf vec, string file);
 
 #endif // RWFUNCTIONS_H
