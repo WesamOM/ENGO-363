@@ -21,4 +21,5 @@ MatrixXf covarianceDhat(double a_posteriori, MatrixXf normalMatrix);
 MatrixXf covarianceXhat(double a_posteriori, MatrixXf normalMatrix);
 MatrixXf covarianceLhat(MatrixXf designMatrix, MatrixXf covarXhat);
 MatrixXf covarianceVhat(MatrixXf covar, MatrixXf covarLhat);
+MatrixXf correlation(MatrixXf covarXhat);
 #endif // CALCULATIONS_H

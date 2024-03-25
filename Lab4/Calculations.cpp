@@ -141,3 +141,20 @@ MatrixXf covarianceVhat(MatrixXf covar, MatrixXf covarLhat)
     MatrixXf covarVhat = covar - covarLhat;
     return covarVhat;
 }
+
+MatrixXf correlation(MatrixXf covarXhat)
+{
+    int n = covarXhat.rows();
+    MatrixXf corr(n, n);
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            double corrCoeff = covarXhat(i, j) / sqrt(covarXhat(i, i) * covarXhat(j, j));
+            corr(i, j) = corrCoeff;
+        }
+    }
+
+    return corr;
+}
