@@ -3,8 +3,10 @@
 #include <fstream>
 #include <iomanip>
 
+// Read observation coordinates from file and store in a MatrixXf
 MatrixXf readObsCoord(string file)
 {
+    // Open input file
     ifstream input_file(file);
     if (!input_file.is_open())
     {
@@ -12,7 +14,7 @@ MatrixXf readObsCoord(string file)
         exit(1);
     }
 
-    // Read the data from the file
+    // Read data from the file
     vector<Vector2f> data;
     float x, y;
     while (input_file >> x >> y)
@@ -20,7 +22,7 @@ MatrixXf readObsCoord(string file)
         data.push_back(Vector2f(x, y));
     }
 
-    // Convert the vector of vectors to a MatrixXf
+    // Convert vector of vectors to MatrixXf
     int num_rows = data.size();
     MatrixXf obsCoord(num_rows, 2);
     for (int i = 0; i < num_rows; i++)
@@ -31,8 +33,10 @@ MatrixXf readObsCoord(string file)
     return obsCoord;
 }
 
+// Read distances from file and store in a VectorXf
 VectorXf readDist(string file)
 {
+    // Open input file
     ifstream input_file(file);
     if (!input_file.is_open())
     {
@@ -40,7 +44,7 @@ VectorXf readDist(string file)
         exit(1);
     }
 
-    // Read the data from the file
+    // Read data from the file
     vector<double> data;
     double distance;
     while (input_file >> distance)
@@ -48,7 +52,7 @@ VectorXf readDist(string file)
         data.push_back(distance);
     }
 
-    // Convert the vector to a VectorXf
+    // Convert vector to VectorXf
     int num_elements = data.size();
     VectorXf distances(num_elements);
     for (int i = 0; i < num_elements; i++)
@@ -59,39 +63,42 @@ VectorXf readDist(string file)
     return distances;
 }
 
+// Write a MatrixXf to a file
 void writeMatrix(MatrixXf matrix, string file)
 {
+    // Open output file
     ofstream outputFile(file);
-
     if (!outputFile.is_open())
     {
         cerr << "Error: Unable to open file " << file << endl;
         return;
     }
 
+    // Write matrix elements to the file
     for (int i = 0; i < matrix.rows(); i++)
     {
         for (int j = 0; j < matrix.cols(); j++)
         {
             outputFile << setw(11) << matrix(i, j) << "\t";
         }
-
         outputFile << endl;
     }
 
     outputFile.close();
 }
 
+// Write a VectorXf to a file
 void writeVector(VectorXf vec, string file)
 {
+    // Open output file
     ofstream outputFile(file);
-
     if (!outputFile.is_open())
     {
         cerr << "Error: Unable to open file " << file << endl;
         return;
     }
 
+    // Write vector elements to the file
     for (int i = 0; i < vec.size(); i++)
     {
         outputFile << vec(i) << endl;
