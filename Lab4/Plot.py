@@ -22,7 +22,6 @@ Y_INITIAL = 175
 # and label them
 pointNum = 1
 for x, y in cntrlPnts:
-    print(x, y)
     plt.scatter(x, y, label = f"Point {pointNum}", color = "red")
     plt.text(x + 2, y + 2, f"Point {pointNum}", ha = "left", va = "bottom")
     plt.plot([X_INITIAL, x], [Y_INITIAL, y], color = "black",
@@ -40,4 +39,23 @@ plt.title('Trilateration Network')
 plt.grid(True)
 plt.axis('equal')
 plt.savefig("Trilateration_Plot")
+plt.show()
+
+# Task 2
+# Load residuals from file
+residualsFile = "Residuals_Vector.txt"
+residuals = np.loadtxt(residualsFile)
+
+# Create a list holding the number of Observations
+num_of_obs = []
+for i in range(len(residuals)):
+    num_of_obs.append(i + 1)
+
+# Add titles, show, and save figure
+plt.scatter(num_of_obs, residuals, marker = "o")
+plt.title("Residuals Plot")
+plt.xlabel("Observation Number")
+plt.ylabel("Residuals [m]")
+plt.grid(True)
+plt.savefig("Residuals_Plot")
 plt.show()
